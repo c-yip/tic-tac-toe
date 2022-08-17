@@ -1,0 +1,10 @@
+.game-board-container {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+}
+
+.boardCell {
+    background-color: rgb(218, 218, 218);
+    border-style: solid;
+}

@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+    font-family: 'Archivo Black', sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -71,4 +72,16 @@ table {
     border: thin solid black;
     width: 200px;
     height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(200px * .9);
+}
+
+.playerOne {
+    color: black;
+}
+
+.playerTwo {
+    color: red;
 }

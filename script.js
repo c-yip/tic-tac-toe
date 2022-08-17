@@ -1,6 +1,6 @@
 // game board module
 const gameBoardModule = (() => {
-    const gameBoard = document.querySelector(".game-board");
+    const gameBoard = document.getElementById("game-board");
     const boardCells = document.querySelectorAll(".board-cell");
 
     return {
@@ -13,6 +13,5 @@ const gameBoardModule = (() => {
 
 // players factory function
 const Player = (playerOne, playerTwo) => {
-    const playerOne = inputOne;
-    const playerTwo = inputTwo;
+    
 }

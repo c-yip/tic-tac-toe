@@ -30,14 +30,18 @@ const gameLogic = (() => {
                 return playerOne;
             } else return playerTwo;
         }
-        
         playerSelection(cell, currentClass());
+        changeTurn();
     };
 
     // adds class and input to div
     const playerSelection = function(cell, currentClass) {
         cell.classList.add(currentClass.className);
         cell.textContent = currentClass.input;
+    }
+
+    const changeTurn = function() {
+        playerTwoTurn = !playerTwoTurn;
     }
 
     return {

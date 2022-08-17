@@ -1,8 +1,18 @@
 // game board module
-const gameBoard = (() => {
-    
+const gameBoardModule = (() => {
+    const gameBoard = document.querySelector(".game-board");
+    const boardCells = document.querySelectorAll(".board-cell");
+
+    return {
+        gameBoard,
+        boardCells
+    }
 })();
 
-// display controller module
+// game logic module
 
-// players
+// players factory function
+const Player = (playerOne, playerTwo) => {
+    const playerOne = inputOne;
+    const playerTwo = inputTwo;
+}

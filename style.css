@@ -49,6 +49,14 @@ table {
 }
 /* end of reset */
 
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}
+
 .container {
     display: flex;
     flex-direction: column;

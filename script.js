@@ -73,18 +73,6 @@ const playerModule = (() => {
 
 // game logic module
 const gameLogic = (() => {
-    const createPlayer = function(e) {
-        e.preventDefault();
-        const playerXName = document.querySelector("#player-x-name").value;
-        const playerOName = document.querySelector("#player-o-name").value;
-        playerOne = playerModule.player("playerOne", "X", playerXName);
-        playerTwo = playerModule.player("playerTwo", "O", playerOName);
-        return playerOne, playerTwo
-    }
-
-    let playerOne;
-    let playerTwo;
-    
     let playerTwoTurn = false;
 
     const playerInput = function(e) {
@@ -98,6 +86,7 @@ const gameLogic = (() => {
         playerSelection(cell, currentClass());
         changeTurn();
         gameBoardModule.checkResult();
+        console.log(playerOne.name)
     };
 
     // adds class and input to div
@@ -111,17 +100,22 @@ const gameLogic = (() => {
     }
 
     return {
-        playerInput,
-        playerOne,
-        playerTwo,
-        createPlayer
+        playerInput
     };
 })();
 
+const createPlayer = function(e) {
+    e.preventDefault();
+    const playerXName = document.querySelector("#player-x-name").value;
+    const playerOName = document.querySelector("#player-o-name").value;
+    playerOne = playerModule.player("playerOne", "X", playerXName);
+    playerTwo = playerModule.player("playerTwo", "O", playerOName);
+    console.log(playerOne)
+}
 
 // event listener
 gameBoardModule.boardCells.forEach(cell => {
     cell.addEventListener('click', gameLogic.playerInput, {once: true})
 })
 
-playerModule.submitPlayerName.addEventListener('click', gameLogic.createPlayer, {once: true})
+playerModule.submitPlayerName.addEventListener('click', (createPlayer), {once: true})

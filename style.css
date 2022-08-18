@@ -87,9 +87,13 @@ table {
 }
 
 /* form styling */
-#player-name-submission {
-    margin-left: 10rem;
-    margin-right: 10rem;
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10rem;
+    padding-right: 10rem;
 }
 
 input[type=text], select {

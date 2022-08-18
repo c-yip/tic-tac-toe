@@ -96,6 +96,7 @@ const gameBoardModule = (() => {
         gameBoard,
         boardCells,
         form,
+        modal,
         checkResult,
         checkTie
     };
@@ -130,7 +131,9 @@ const gameLogic = (() => {
         playerSelection(cell, currentClass());
         gameBoardModule.checkResult();
         gameBoardModule.checkTie();
-        changeTurn();
+        if (gameBoardModule.modal.classList.contains("active")) {
+            return
+        } else changeTurn();
     };
 
     // adds class and input to div

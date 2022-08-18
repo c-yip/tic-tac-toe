@@ -12,6 +12,9 @@ const gameBoardModule = (() => {
     const cellEight = document.querySelector("[data-id='eight']");
     const cellNine = document.querySelector("[data-id='nine']");
     const form = document.querySelector(".form-container");
+    const modal = document.getElementById("modal");
+    const closeModal = document.querySelector(".closeModal")
+    const modalContent = document.querySelector(".modal-content")
 
     // win lose logic
     const checkResult = function () {
@@ -24,8 +27,8 @@ const gameBoardModule = (() => {
                 cellOne.classList.contains("playerOne") && cellFive.classList.contains("playerOne") && cellNine.classList.contains("playerOne") ||
                 cellThree.classList.contains("playerOne") && cellFive.classList.contains("playerOne") && cellSeven.classList.contains("playerOne")
             ) {
-                console.log("player one wins")
-                alert(`${playerOne.name} wins!`)
+                console.log("player one wins");
+                modalActive(`${playerOne.name} wins!`);
             }
         if
             (
@@ -38,8 +41,8 @@ const gameBoardModule = (() => {
                 cellOne.classList.contains("playerTwo") && cellFive.classList.contains("playerTwo") && cellNine.classList.contains("playerTwo") ||
                 cellThree.classList.contains("playerTwo") && cellFive.classList.contains("playerTwo") && cellSeven.classList.contains("playerTwo")
             ) {
-                console.log("player two wins")
-                alert(`${playerTwo.name} wins!`)
+                console.log("player two wins");
+                modalActive(`${playerTwo.name} wins!`)
             }
     }
 
@@ -50,9 +53,20 @@ const gameBoardModule = (() => {
     const checkTie = function() {
         tieCounter++;
         if (tieCounter == 9) {
-            alert ("It's a tie!")
+            modalActive(`It's a tie!`)
         }
         console.log(`Tie counter is ${tieCounter}`)
+    }
+
+    // modal
+    modalActive = function(text) {
+        modal.classList.add("active");
+        overlay.classList.add("active");
+        modalContent.textContent = text;
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove("active");
+            overlay.classList.remove("active");
+        })
     }
 
     return {

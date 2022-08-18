@@ -14,7 +14,7 @@ const gameBoardModule = (() => {
 
     // win lose logic
     const checkResult = function () {
-        gameBoardModule.boardCells.forEach(cell => {
+        boardCells.forEach(cell => {
             if (
                 (
                     cellOne.classList.contains("playerOne") && cellTwo.classList.contains("playerOne") && cellThree.classList.contains("playerOne") ||

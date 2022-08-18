@@ -61,6 +61,10 @@ table {
 }
 
 .game-board {
+    display: none;
+}
+
+.game-board.active {
     display: grid;
     justify-content: center;
     align-content: center;
@@ -94,6 +98,10 @@ table {
     align-items: center;
     padding-left: 10rem;
     padding-right: 10rem;
+}
+
+.form-container.inactive {
+    display: none;
 }
 
 input[type=text], select {

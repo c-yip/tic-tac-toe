@@ -2,15 +2,16 @@
 const gameBoardModule = (() => {
     const gameBoard = document.getElementById("game-board");
     const boardCells = document.querySelectorAll(".board-cell");
-    const cellOne = document.querySelector("[data-id='one']")
-    const cellTwo = document.querySelector("[data-id='two']")
-    const cellThree = document.querySelector("[data-id='three']")
-    const cellFour = document.querySelector("[data-id='four']")
-    const cellFive = document.querySelector("[data-id='five']")
-    const cellSix = document.querySelector("[data-id='six']")
-    const cellSeven = document.querySelector("[data-id='seven']")
-    const cellEight = document.querySelector("[data-id='eight']")
-    const cellNine = document.querySelector("[data-id='nine']")
+    const cellOne = document.querySelector("[data-id='one']");
+    const cellTwo = document.querySelector("[data-id='two']");
+    const cellThree = document.querySelector("[data-id='three']");
+    const cellFour = document.querySelector("[data-id='four']");
+    const cellFive = document.querySelector("[data-id='five']");
+    const cellSix = document.querySelector("[data-id='six']");
+    const cellSeven = document.querySelector("[data-id='seven']");
+    const cellEight = document.querySelector("[data-id='eight']");
+    const cellNine = document.querySelector("[data-id='nine']");
+    const form = document.querySelector(".form-container");
 
     // win lose logic
     const checkResult = function () {
@@ -57,15 +58,7 @@ const gameBoardModule = (() => {
     return {
         gameBoard,
         boardCells,
-        cellOne,
-        cellTwo,
-        cellThree,
-        cellFour,
-        cellFive,
-        cellSix,
-        cellSeven,
-        cellEight,
-        cellNine,
+        form,
         checkResult,
         checkTie
     };
@@ -125,7 +118,8 @@ const createPlayer = function(e) {
     const playerOName = document.querySelector("#player-o-name").value;
     playerOne = playerModule.player("playerOne", "X", playerXName);
     playerTwo = playerModule.player("playerTwo", "O", playerOName);
-    console.log(playerOne)
+    gameBoardModule.gameBoard.classList.add("active");
+    gameBoardModule.form.classList.add("inactive");
 }
 
 // event listener

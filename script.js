@@ -13,8 +13,9 @@ const gameBoardModule = (() => {
     const cellNine = document.querySelector("[data-id='nine']");
     const form = document.querySelector(".form-container");
     const modal = document.getElementById("modal");
-    const closeModal = document.querySelector(".closeModal")
-    const modalContent = document.querySelector(".modal-content")
+    const closeModal = document.querySelector(".closeModal");
+    const modalContent = document.querySelector(".modal-content");
+    const resetButton = document.querySelector(".btnModalReset");
 
     // win lose logic
     const checkResult = function () {
@@ -54,10 +55,10 @@ const gameBoardModule = (() => {
     let winner;
     const checkTie = function() {
         tieCounter++;
+        console.log(`Tie counter is ${tieCounter}`)
         if (tieCounter == 9 && winner != true) {
             modalActive(`It's a tie!`)
         }
-        console.log(`Tie counter is ${tieCounter}`)
     }
 
     // modal
@@ -65,7 +66,25 @@ const gameBoardModule = (() => {
         modal.classList.add("active");
         overlay.classList.add("active");
         modalContent.textContent = text;
-        closeModal.addEventListener('click', () => {
+        closeModal.addEventListener("click", () => {
+            modal.classList.remove("active");
+            overlay.classList.remove("active");
+        })
+        resetButton.addEventListener("click", reset);
+        boardCells.forEach(cell => {
+            cell.addEventListener('click', gameLogic.playerInput, {once: true})
+        })
+    }
+
+    // reset
+
+    reset = function () {
+        tieCounter = 0;
+        console.log(`Tie counter is ${tieCounter}`)
+        boardCells.forEach(cell => {
+            cell.classList.remove("playerOne");
+            cell.classList.remove("playerTwo");
+            cell.textContent = "";
             modal.classList.remove("active");
             overlay.classList.remove("active");
         })
@@ -107,10 +126,9 @@ const gameLogic = (() => {
             } else return playerTwo;
         }
         playerSelection(cell, currentClass());
-        changeTurn();
         gameBoardModule.checkResult();
         gameBoardModule.checkTie();
-        console.log(playerOne.name);
+        changeTurn();
     };
 
     // adds class and input to div
@@ -124,7 +142,8 @@ const gameLogic = (() => {
     }
 
     return {
-        playerInput
+        playerInput,
+        playerTwoTurn
     };
 })();
 

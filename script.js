@@ -58,9 +58,30 @@ const gameBoardModule = (() => {
 })();
 
 // players factory function
-const player = (className, input) => {
-    return {className, input, name};
-}
+const playerModule = (() => {
+    const player = (className, input, name) => {
+        return {className, input, name};
+    }
+    
+    const submitPlayerName = document.querySelector("#submit-player-name");
+
+    const createPlayer = function(e) {
+        e.preventDefault();
+        const playerXName = document.querySelector("#player-x-name").value;
+        console.log(playerXName);
+        const playerOName = document.querySelector("#player-o-name").value;
+        console.log(playerOName);
+        const playerOne = player("playerOne", "X", playerXName);
+        const playerTwo = player("playerTwo", "O", playerOName);
+        console.log(playerOne);
+        console.log(playerTwo);
+    }
+
+    return {
+        submitPlayerName,
+        createPlayer
+    }
+})();
 
 // game logic module
 const gameLogic = (() => {
@@ -105,3 +126,5 @@ const gameLogic = (() => {
 gameBoardModule.boardCells.forEach(cell => {
     cell.addEventListener('click', gameLogic.playerInput, {once: true})
 })
+
+playerModule.submitPlayerName.addEventListener('click', playerModule.createPlayer, {once: true})

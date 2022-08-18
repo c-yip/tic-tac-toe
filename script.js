@@ -70,10 +70,9 @@ const gameBoardModule = (() => {
             modal.classList.remove("active");
             overlay.classList.remove("active");
         })
+        winner = false;
+        console.log(winner);
         resetButton.addEventListener("click", reset);
-        boardCells.forEach(cell => {
-            cell.addEventListener('click', gameLogic.playerInput, {once: true})
-        })
     }
 
     // reset
@@ -87,6 +86,9 @@ const gameBoardModule = (() => {
             cell.textContent = "";
             modal.classList.remove("active");
             overlay.classList.remove("active");
+        })
+        boardCells.forEach(cell => {
+            cell.addEventListener('click', gameLogic.playerInput, {once: true})
         })
     }
 

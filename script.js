@@ -11,6 +11,17 @@ const gameBoardModule = (() => {
     const cellSeven = document.querySelector("[data-id='seven']")
     const cellEight = document.querySelector("[data-id='eight']")
     const cellNine = document.querySelector("[data-id='nine']")
+
+    const checkResult = function (className) {
+        gameBoardModule.boardCells.forEach(cell => {
+            if (
+                cellOne.classList.contains('playerOne') && cellTwo.classList.contains('playerOne') && cellThree.classList.contains('playerOne')
+                ) {
+                    console.log('winner')
+                }
+        })
+    }
+
     return {
         gameBoard,
         boardCells,
@@ -22,7 +33,8 @@ const gameBoardModule = (() => {
         cellSix,
         cellSeven,
         cellEight,
-        cellNine
+        cellNine,
+        checkResult
     };
 })();
 
@@ -49,6 +61,7 @@ const gameLogic = (() => {
         }
         playerSelection(cell, currentClass());
         changeTurn();
+        gameBoardModule.checkResult();
     };
 
     // adds class and input to div
@@ -60,18 +73,6 @@ const gameLogic = (() => {
     const changeTurn = function() {
         playerTwoTurn = !playerTwoTurn;
     }
-
-    // const checkResult = function (className) {
-    //     gameBoardModule.boardCells.forEach(cell => {
-    //         if (
-    //             cell.
-    //             ) {
-                    
-    //             }
-    //     })
-
-        
-    // }
 
     return {
         playerInput,

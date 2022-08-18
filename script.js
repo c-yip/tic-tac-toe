@@ -14,9 +14,7 @@ const gameBoardModule = (() => {
 
     // win lose logic
     const checkResult = function () {
-        if (
-            (
-                cellOne.classList.contains("playerOne") && cellTwo.classList.contains("playerOne") && cellThree.classList.contains("playerOne") ||
+        if (cellOne.classList.contains("playerOne") && cellTwo.classList.contains("playerOne") && cellThree.classList.contains("playerOne") ||
                 cellFour.classList.contains("playerOne") && cellFive.classList.contains("playerOne") && cellSix.classList.contains("playerOne") ||
                 cellSeven.classList.contains("playerOne") && cellEight.classList.contains("playerOne") && cellNine.classList.contains("playerOne") ||
                 cellOne.classList.contains("playerOne") && cellFour.classList.contains("playerOne") && cellSeven.classList.contains("playerOne") ||
@@ -24,8 +22,11 @@ const gameBoardModule = (() => {
                 cellThree.classList.contains("playerOne") && cellSix.classList.contains("playerOne") && cellNine.classList.contains("playerOne") ||
                 cellOne.classList.contains("playerOne") && cellFive.classList.contains("playerOne") && cellNine.classList.contains("playerOne") ||
                 cellThree.classList.contains("playerOne") && cellFive.classList.contains("playerOne") && cellSeven.classList.contains("playerOne")
-            ) ||
-
+            ) {
+                console.log("player one wins")
+                alert(`${playerOne.name} wins!`)
+            }
+        if
             (
                 cellOne.classList.contains("playerTwo") && cellTwo.classList.contains("playerTwo") && cellThree.classList.contains("playerTwo") ||
                 cellFour.classList.contains("playerTwo") && cellFive.classList.contains("playerTwo") && cellSix.classList.contains("playerTwo") ||
@@ -35,10 +36,22 @@ const gameBoardModule = (() => {
                 cellThree.classList.contains("playerTwo") && cellSix.classList.contains("playerTwo") && cellNine.classList.contains("playerTwo") ||
                 cellOne.classList.contains("playerTwo") && cellFive.classList.contains("playerTwo") && cellNine.classList.contains("playerTwo") ||
                 cellThree.classList.contains("playerTwo") && cellFive.classList.contains("playerTwo") && cellSeven.classList.contains("playerTwo")
-            )
-        ) {
-                console.log("winner")
+            ) {
+                console.log("player two wins")
+                alert(`${playerTwo.name} wins!`)
             }
+    }
+
+    // tie logic
+
+    let tieCounter = 0;
+
+    const checkTie = function() {
+        tieCounter++;
+        if (tieCounter == 9) {
+            alert ("It's a tie!")
+        }
+        console.log(`Tie counter is ${tieCounter}`)
     }
 
     return {
@@ -53,7 +66,8 @@ const gameBoardModule = (() => {
         cellSeven,
         cellEight,
         cellNine,
-        checkResult
+        checkResult,
+        checkTie
     };
 })();
 
@@ -86,7 +100,8 @@ const gameLogic = (() => {
         playerSelection(cell, currentClass());
         changeTurn();
         gameBoardModule.checkResult();
-        console.log(playerOne.name)
+        gameBoardModule.checkTie();
+        console.log(playerOne.name);
     };
 
     // adds class and input to div
@@ -118,4 +133,4 @@ gameBoardModule.boardCells.forEach(cell => {
     cell.addEventListener('click', gameLogic.playerInput, {once: true})
 })
 
-playerModule.submitPlayerName.addEventListener('click', (createPlayer), {once: true})
+playerModule.submitPlayerName.addEventListener('click', createPlayer, {once: true})

@@ -28,6 +28,7 @@ const gameBoardModule = (() => {
                 cellThree.classList.contains("playerOne") && cellFive.classList.contains("playerOne") && cellSeven.classList.contains("playerOne")
             ) {
                 console.log("player one wins");
+                winner = true;
                 modalActive(`${playerOne.name} wins!`);
             }
         if
@@ -42,6 +43,7 @@ const gameBoardModule = (() => {
                 cellThree.classList.contains("playerTwo") && cellFive.classList.contains("playerTwo") && cellSeven.classList.contains("playerTwo")
             ) {
                 console.log("player two wins");
+                winner = true;
                 modalActive(`${playerTwo.name} wins!`)
             }
     }
@@ -49,10 +51,10 @@ const gameBoardModule = (() => {
     // tie logic
 
     let tieCounter = 0;
-
+    let winner;
     const checkTie = function() {
         tieCounter++;
-        if (tieCounter == 9) {
+        if (tieCounter == 9 && winner != true) {
             modalActive(`It's a tie!`)
         }
         console.log(`Tie counter is ${tieCounter}`)

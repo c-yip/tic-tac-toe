@@ -2,16 +2,33 @@
 const gameBoardModule = (() => {
     const gameBoard = document.getElementById("game-board");
     const boardCells = document.querySelectorAll(".board-cell");
-
+    const cellOne = document.querySelector("[data-id='one']")
+    const cellTwo = document.querySelector("[data-id='two']")
+    const cellThree = document.querySelector("[data-id='three']")
+    const cellFour = document.querySelector("[data-id='four']")
+    const cellFive = document.querySelector("[data-id='five']")
+    const cellSix = document.querySelector("[data-id='six']")
+    const cellSeven = document.querySelector("[data-id='seven']")
+    const cellEight = document.querySelector("[data-id='eight']")
+    const cellNine = document.querySelector("[data-id='nine']")
     return {
         gameBoard,
-        boardCells
+        boardCells,
+        cellOne,
+        cellTwo,
+        cellThree,
+        cellFour,
+        cellFive,
+        cellSix,
+        cellSeven,
+        cellEight,
+        cellNine
     };
 })();
 
 // players factory function
 const player = (className, input) => {
-    return {className, input};
+    return {className, input, name};
 }
 
 // game logic module
@@ -43,6 +60,18 @@ const gameLogic = (() => {
     const changeTurn = function() {
         playerTwoTurn = !playerTwoTurn;
     }
+
+    // const checkResult = function (className) {
+    //     gameBoardModule.boardCells.forEach(cell => {
+    //         if (
+    //             cell.
+    //             ) {
+                    
+    //             }
+    //     })
+
+        
+    // }
 
     return {
         playerInput,

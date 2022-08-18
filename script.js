@@ -12,10 +12,18 @@ const gameBoardModule = (() => {
     const cellEight = document.querySelector("[data-id='eight']")
     const cellNine = document.querySelector("[data-id='nine']")
 
+    // win lose logic
     const checkResult = function (className) {
         gameBoardModule.boardCells.forEach(cell => {
             if (
-                cellOne.classList.contains('playerOne') && cellTwo.classList.contains('playerOne') && cellThree.classList.contains('playerOne')
+                cellOne.classList.contains('playerOne') && cellTwo.classList.contains('playerOne') && cellThree.classList.contains('playerOne') ||
+                cellFour.classList.contains('playerOne') && cellFive.classList.contains('playerOne') && cellSix.classList.contains('playerOne') ||
+                cellSeven.classList.contains('playerOne') && cellEight.classList.contains('playerOne') && cellNine.classList.contains('playerOne') ||
+                cellOne.classList.contains('playerOne') && cellFour.classList.contains('playerOne') && cellSeven.classList.contains('playerOne') ||
+                cellTwo.classList.contains('playerOne') && cellFive.classList.contains('playerOne') && cellEight.classList.contains('playerOne') ||
+                cellThree.classList.contains('playerOne') && cellSix.classList.contains('playerOne') && cellNine.classList.contains('playerOne') ||
+                cellOne.classList.contains('playerOne') && cellFive.classList.contains('playerOne') && cellNine.classList.contains('playerOne') ||
+                cellThree.classList.contains('playerOne') && cellFive.classList.contains('playerOne') && cellSeven.classList.contains('playerOne')
                 ) {
                     console.log('winner')
                 }

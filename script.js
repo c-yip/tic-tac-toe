@@ -13,19 +13,32 @@ const gameBoardModule = (() => {
     const cellNine = document.querySelector("[data-id='nine']")
 
     // win lose logic
-    const checkResult = function (className) {
+    const checkResult = function () {
         gameBoardModule.boardCells.forEach(cell => {
             if (
-                cellOne.classList.contains('playerOne') && cellTwo.classList.contains('playerOne') && cellThree.classList.contains('playerOne') ||
-                cellFour.classList.contains('playerOne') && cellFive.classList.contains('playerOne') && cellSix.classList.contains('playerOne') ||
-                cellSeven.classList.contains('playerOne') && cellEight.classList.contains('playerOne') && cellNine.classList.contains('playerOne') ||
-                cellOne.classList.contains('playerOne') && cellFour.classList.contains('playerOne') && cellSeven.classList.contains('playerOne') ||
-                cellTwo.classList.contains('playerOne') && cellFive.classList.contains('playerOne') && cellEight.classList.contains('playerOne') ||
-                cellThree.classList.contains('playerOne') && cellSix.classList.contains('playerOne') && cellNine.classList.contains('playerOne') ||
-                cellOne.classList.contains('playerOne') && cellFive.classList.contains('playerOne') && cellNine.classList.contains('playerOne') ||
-                cellThree.classList.contains('playerOne') && cellFive.classList.contains('playerOne') && cellSeven.classList.contains('playerOne')
-                ) {
-                    console.log('winner')
+                (
+                    cellOne.classList.contains("playerOne") && cellTwo.classList.contains("playerOne") && cellThree.classList.contains("playerOne") ||
+                    cellFour.classList.contains("playerOne") && cellFive.classList.contains("playerOne") && cellSix.classList.contains("playerOne") ||
+                    cellSeven.classList.contains("playerOne") && cellEight.classList.contains("playerOne") && cellNine.classList.contains("playerOne") ||
+                    cellOne.classList.contains("playerOne") && cellFour.classList.contains("playerOne") && cellSeven.classList.contains("playerOne") ||
+                    cellTwo.classList.contains("playerOne") && cellFive.classList.contains("playerOne") && cellEight.classList.contains("playerOne") ||
+                    cellThree.classList.contains("playerOne") && cellSix.classList.contains("playerOne") && cellNine.classList.contains("playerOne") ||
+                    cellOne.classList.contains("playerOne") && cellFive.classList.contains("playerOne") && cellNine.classList.contains("playerOne") ||
+                    cellThree.classList.contains("playerOne") && cellFive.classList.contains("playerOne") && cellSeven.classList.contains("playerOne")
+                ) ||
+
+                (
+                    cellOne.classList.contains("playerTwo") && cellTwo.classList.contains("playerTwo") && cellThree.classList.contains("playerTwo") ||
+                    cellFour.classList.contains("playerTwo") && cellFive.classList.contains("playerTwo") && cellSix.classList.contains("playerTwo") ||
+                    cellSeven.classList.contains("playerTwo") && cellEight.classList.contains("playerTwo") && cellNine.classList.contains("playerTwo") ||
+                    cellOne.classList.contains("playerTwo") && cellFour.classList.contains("playerTwo") && cellSeven.classList.contains("playerTwo") ||
+                    cellTwo.classList.contains("playerTwo") && cellFive.classList.contains("playerTwo") && cellEight.classList.contains("playerTwo") ||
+                    cellThree.classList.contains("playerTwo") && cellSix.classList.contains("playerTwo") && cellNine.classList.contains("playerTwo") ||
+                    cellOne.classList.contains("playerTwo") && cellFive.classList.contains("playerTwo") && cellNine.classList.contains("playerTwo") ||
+                    cellThree.classList.contains("playerTwo") && cellFive.classList.contains("playerTwo") && cellSeven.classList.contains("playerTwo")
+                )
+            ) {
+                    console.log("winner")
                 }
         })
     }

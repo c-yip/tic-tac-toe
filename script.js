@@ -65,34 +65,30 @@ const playerModule = (() => {
     
     const submitPlayerName = document.querySelector("#submit-player-name");
 
-    const createPlayer = function(e) {
-        e.preventDefault();
-        const playerXName = document.querySelector("#player-x-name").value;
-        console.log(playerXName);
-        const playerOName = document.querySelector("#player-o-name").value;
-        console.log(playerOName);
-        const playerOne = player("playerOne", "X", playerXName);
-        const playerTwo = player("playerTwo", "O", playerOName);
-        console.log(playerOne);
-        console.log(playerTwo);
-    }
-
     return {
         submitPlayerName,
-        createPlayer
+        player
     }
 })();
 
 // game logic module
 const gameLogic = (() => {
-    const playerOne = player("playerOne", "X");
-    const playerTwo = player("playerTwo", "O");
+    const createPlayer = function(e) {
+        e.preventDefault();
+        const playerXName = document.querySelector("#player-x-name").value;
+        const playerOName = document.querySelector("#player-o-name").value;
+        playerOne = playerModule.player("playerOne", "X", playerXName);
+        playerTwo = playerModule.player("playerTwo", "O", playerOName);
+        return playerOne, playerTwo
+    }
+
+    let playerOne;
+    let playerTwo;
     
     let playerTwoTurn = false;
 
     const playerInput = function(e) {
         const cell = e.target;
-        console.log(playerTwoTurn)
         // checks whether player two turn and assigns player to current class
         const currentClass = function() {
             if (playerTwoTurn == false) {
@@ -117,7 +113,8 @@ const gameLogic = (() => {
     return {
         playerInput,
         playerOne,
-        playerTwo
+        playerTwo,
+        createPlayer
     };
 })();
 
@@ -127,4 +124,4 @@ gameBoardModule.boardCells.forEach(cell => {
     cell.addEventListener('click', gameLogic.playerInput, {once: true})
 })
 
-playerModule.submitPlayerName.addEventListener('click', playerModule.createPlayer, {once: true})
+playerModule.submitPlayerName.addEventListener('click', gameLogic.createPlayer, {once: true})

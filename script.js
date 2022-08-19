@@ -76,7 +76,6 @@ const gameBoardModule = (() => {
     }
 
     // reset
-
     reset = function () {
         tieCounter = 0;
         console.log(`Tie counter is ${tieCounter}`)
@@ -84,9 +83,9 @@ const gameBoardModule = (() => {
             cell.classList.remove("playerOne");
             cell.classList.remove("playerTwo");
             cell.textContent = "";
-            modal.classList.remove("active");
-            overlay.classList.remove("active");
         })
+        modal.classList.remove("active");
+        overlay.classList.remove("active");
         boardCells.forEach(cell => {
             cell.addEventListener('click', gameLogic.playerInput, {once: true})
         })
@@ -132,7 +131,7 @@ const gameLogic = (() => {
         gameBoardModule.checkResult();
         gameBoardModule.checkTie();
         if (gameBoardModule.modal.classList.contains("active")) {
-            return
+            playerTwoTurn = false;
         } else changeTurn();
     };
 
